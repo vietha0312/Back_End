@@ -1,10 +1,12 @@
 import express from "express";
 import authRouter from "./routes/auth";
+import productRouter from "./routes/product";
 import mongoose from "mongoose";
 import categoryRouter from "./routes/category";
 const app = express();
 
 app.use(express.json());
+app.use("/api", productRouter);
 app.use("/api", authRouter);
 app.use("/api", categoryRouter);
 mongoose.connect(
