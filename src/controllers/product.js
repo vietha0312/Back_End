@@ -1,23 +1,24 @@
 import dotenv from "dotenv";
 import Product from "../models/product";
-import {productSchema} from "../schemas/product";
+import { productSchema } from "../schemas/product";
 import Category from "../models/category";
-import {paginate} from "mongoose-paginate-v2";
+import { paginate } from "mongoose-paginate-v2";
 dotenv.config();
 
 export const getAll = async (req, res) => {
-    const {_litmit = 10, _sort = "createAt", _order = "asc"} = req.query;
-    const options = {
-        customLabel:{
-            docs: "data",
-            litmit: _litmit,
-            _sort:{
-                [_sort]: _order === "desc" ? -1 : 1,
-            },
-        },
-    };
+    // const { _litmit = 10, _sort = "createAt", _order = "asc" } = req.query;
+    // const options = {
+    //     customLabel: {
+    //         docs: "data",
+    //         litmit: _litmit,
+    //         _sort: {
+    //             [_sort]: _order === "desc" ? -1 : 1,
+    //         },
+    //     },
+    // };
     try {
-        const products = await Product.paginate({},options);
+        // const products = await Product.paginate({});
+        const products = await Product.find();
         if (products.length === 0) {
             return res.status(404).json({
                 message: "Không có sản phẩm nào",
@@ -32,6 +33,17 @@ export const getAll = async (req, res) => {
             message: error.message,
         });
     }
+    // try {
+    //     const products = await Product.find();
+    //     return res.json({
+    //         message: "Hiện thị danh sách sản phẩm thành công",
+    //         products
+    //     });
+    // } catch (error) {
+    //     return res.status(400).json({
+    //         message: error.message,
+    //     });
+    // }
 };
 
 export const get = async (req, res) => {

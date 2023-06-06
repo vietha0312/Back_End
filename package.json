@@ -22,5 +22,5 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.2",
     "mongoose-paginate-v2": "^1.7.1"
-}
+  }
 }
