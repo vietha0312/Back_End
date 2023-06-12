@@ -18,7 +18,9 @@ const productSchema = new mongoose.Schema(
             type: mongoose.Types.ObjectId,
             ref: "Category",
         },
+        slug: { type: String, slug: "name" },
     },
+
     { timestamps: true, versionKey: false }
 );
 productSchema.plugin(mongoosePaginate);
