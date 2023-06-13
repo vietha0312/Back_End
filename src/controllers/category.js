@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import joi from "joi";
-import Category from "../models/Category";
+import Category from "../models/category";
 
 dotenv.config();
 const categorySchema = joi.object({
